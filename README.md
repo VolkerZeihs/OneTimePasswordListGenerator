@@ -7,3 +7,4 @@ At this Version the tool uses only /dev/urandom as source of randomness. You ar 
 
 You need  Latex and a UNIX like enviroment to run this.
 
+To make a password List run "make".
