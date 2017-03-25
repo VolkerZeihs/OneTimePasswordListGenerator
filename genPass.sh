@@ -43,7 +43,7 @@ passwords=""
 fileName="$1"
 
 for i in $(seq 1 "${anz}") ; do
-  passwords+="$i $(dd if=/dev/urandom bs=1 count=${length} 2> /dev/null | base64 | sed -e 's/\//\\\//g')"'\\[0.3cm]'
+  passwords+="$i $(dd if=/dev/urandom bs=1 count=${length} 2> /dev/null | base64 | sed -e 's/\//\\\//g')"'\\'
 done
 
 ### TEX FILE ###
@@ -59,12 +59,10 @@ echo "
 
 \renewcommand{\familydefault}{\ttdefault}
 \thispagestyle{empty}
-
+\title{\vspace{-2cm}Passwort Liste für unsere E-Mail Korrespondenz}
 \begin{document}
-  \begin{multicols}{3}[
-    \section*{\centering Passwort Liste für unsere E-Mail Korrespondenz}
-    \vspace{0.5cm}
-  ]
+  \maketitle
+  \begin{multicols}{3}[]
     ${passwords}
   \end{multicols}
 \end{document}
