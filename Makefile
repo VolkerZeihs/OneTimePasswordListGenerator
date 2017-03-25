@@ -1,9 +1,11 @@
 document = passList
 document:
-	./genPass.sh $(document) 
-	pdflatex $(document) 
-	pdflatex $(document)
+	mkdir -p trash
+	./genPass.sh -d trash $(document)
+	pdflatex --output-directory=trash "trash/$(document).tex"
+	pdflatex --output-directory=trash "trash/$(document).tex"
+	cp trash/$(document).pdf .
 clean:
-	rm -f *.aux *.bbl *.blg *.lof *.lot *.log *.toc *.lol
+	rm -f trash/*
 cleaner: clean
-	rm -f *.pdf *.out *.tex
+	rm -rf *.pdf trash
